@@ -10,14 +10,9 @@ var users = require('./routes/users');
 
 var app = express();
 
-app.use(require("cors")());
-
-//db
-require("mongoose").connect("mongodb://localhost/project");
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', '=');
+app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
