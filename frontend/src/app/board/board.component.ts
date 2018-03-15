@@ -13,7 +13,8 @@ export class BoardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    return this.comentarioService.fetchComentario();
+    this.comentarioService.fetchComentario()
+    .subscribe (comentarios => this.comentarios = comentarios);
   }
 
 }

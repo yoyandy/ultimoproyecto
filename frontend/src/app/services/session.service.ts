@@ -1,45 +1,45 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import {Http, Response} from '@angular/http';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Http, Response} from '@angular/http';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class SessionService {
-  base_URL = 'http://localhost:3000/api';
-  options = {withCredentials: true};
+
   constructor(private http: Http) { }
+  BASE_URL = 'http://localhost:3000/api';
 
-  handleError(e) {
-    return Observable.throw(e.json().message);
+  signUp(user) {
+    return this.http.post(`${this.BASE_URL}/signup`, user)
+    .map(res => res.json())
+    .catch(e => {
+      alert(JSON.parse(e._body).message);
+      return Observable.throw(e);
+    });
   }
 
-  // Primera forma de enviar datos a nuestro Back-End
-
-  login(username, password) {
-    return this.http.post(`${this.base_URL}/login`, {username, password}, this.options)
-      .map(res => res.json())
-      .catch(err => this.handleError(err));
+  login(user) {
+    return this.http.post(`${this.BASE_URL}/login`, user, {withCredentials: true})
+    .map(res => {
+      res.json();
+      localStorage.setItem('user', JSON.stringify(user));
+      return user;
+    })
+    .catch(e => {
+      console.log(e);
+      return Observable.throw(e);
+  });
   }
 
-// Segunda forma de enviar datos a nuestro Back-End
-
-  signup(formSignup) {
-    return this.http.post(`${this.base_URL}/signup`, formSignup, this.options)
-      .map(res => res.json())
-      .catch(err => this.handleError(err));
-  }
-
-  loggedIn() {
-    return this.http.get(`${this.base_URL}/loggedin`, this.options)
-      .map(res => res.json())
-      .catch(err => this.handleError(err));
-  }
-
-  logout() {
-    return this.http.post(`${this.base_URL}/logout`, {})
-      .map(res => res.json())
-      .catch(err => this.handleError(err));
+  getUsers() {
+    return this.http.get(`http://localhost:3000/api/auth/users`, {withCredentials: true})
+    .map(res => res.json())
+    .catch(e => {
+      alert(JSON.parse(e._body).message);
+      return Observable.throw(e)
+    });
   }
 
 }

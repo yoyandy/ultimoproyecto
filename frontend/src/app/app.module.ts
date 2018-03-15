@@ -1,16 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Http } from '@angular/http';
+import { HttpModule } from '@angular/http';
+import {RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
 import { ComentarioComponent } from './comentario/comentario.component';
 import { EntradaComponent } from './entrada/entrada.component';
-// import { ServiceComponent } from './services/service/service.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+
+
 
 // services
 import {ComentarioService} from './services/comentario.service';
+import {EntradaService} from './services/entrada.service';
+import {SessionService} from './services/session.service';
+
+const routes = [
+  {path: '', component: AppComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'login', component: LoginComponent}
+];
 
 @NgModule({
   declarations: [
@@ -18,14 +30,16 @@ import {ComentarioService} from './services/comentario.service';
     BoardComponent,
     ComentarioComponent,
     EntradaComponent,
-    // ServiceComponent
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    Http
+    HttpModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [ComentarioService],
+  providers: [ComentarioService, SessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
