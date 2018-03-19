@@ -20,10 +20,7 @@ exports.getComentarios = function(req, res, next) {
   }
 
   exports.postComentario = (req, res, next)=>{
-    const newComentario = new Comentario({
-      title: req.body.title,
-      comentarios: req.body.comentario 
-    });
+    const newComentario = new Comentario(req.body);
 
     newComentario.save()
     .then(comentario=>res.status(201).json(comentario))

@@ -1,3 +1,13 @@
-<p>
-  comentario works!
-</p>
+<div id="container">
+  
+    <div>
+      <label >Titulo de tu sueño</label>
+      <input type="text" [(ngModel)]="comment.title">
+      <label for="comentarioText">Describe tu sueño</label>
+      <textarea [(ngModel)]="comment.body" type="comentario" name="comentarioText" maxlength="140"
+        placeholder="What's going on?"></textarea> 
+      <button (click)="saveComentario()" class="button blue fright">Enviar</button>
+    </div>
+  
+  
+  </div>

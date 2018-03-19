@@ -19,7 +19,8 @@ export class LoginComponent implements OnInit {
   login() {
     this.service.login(this.user)
     .subscribe(res => {
-      this.router.navigate(['users']);
+      console.log(res)
+      this.router.navigate(['comentario']);
     });
   }
 

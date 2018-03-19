@@ -9,6 +9,10 @@ var bodyParser = require('body-parser');
 const session = require("express-session");
 const passport = require("passport");
 // require("./helpers/passport");
+const User = require('./models//User');
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 var index = require('./routes/index');
 var comentarios = require('./routes/comentarios');
@@ -20,7 +24,12 @@ var index = require('./routes/index');
 
 var app = express();
 
-app.use(require("cors")());
+const options = {
+  credentials:true,
+  origin:true
+}
+
+app.use(require("cors")(options));
 
 //db
 require("mongoose").connect("mongodb://localhost/sueño"); 
@@ -34,7 +43,7 @@ app.use(session({
   secret: 'frii',
   resave: true,
   saveUninitialized: true,
-  cookie : { httpOnly: true, maxAge: 2419200000 }
+  cookie : { httpOnly: true }
 }));
 
 app.use(passport.initialize());
@@ -51,7 +60,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/api/comentarios', comentarios);
 app.use('/api/entradas', entrada);
-app.use('/api/', auth);
+app.use('/api', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

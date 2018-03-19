@@ -1,10 +1,21 @@
-<section>
 
-        <h2>Login</h2>
-      
-        <input type="text" placeholder="email" [(ngModel)]="user.email">
-        <input type="password" placeholder="Password" [(ngModel)]="user.password">
-        <button (click)="login()" >Login!</button>
+
+     
+
+      <form action="login" style="border:1px solid #ccc">
+       
+  <div class="container">
+      <h1>Log In</h1>
+      <hr>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="email" [(ngModel)]="user.email" required>
+
+    <label for="psw"><b>Contraseña</b></label>
+    <input type="password" placeholder="Password" [(ngModel)]="user.password" required>
         
-      
-      </section>
+    <button (click)="login()" >Login!</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+</form>

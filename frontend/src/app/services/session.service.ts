@@ -22,10 +22,10 @@ export class SessionService {
 
   login(user) {
     return this.http.post(`${this.BASE_URL}/login`, user, {withCredentials: true})
-    .map(res => {
-      res.json();
-      localStorage.setItem('user', JSON.stringify(user));
-      return user;
+    .map(res => res.json())
+    .map(receivedUser=>{
+      localStorage.setItem('user', JSON.stringify(receivedUser));
+      return receivedUser;
     })
     .catch(e => {
       console.log(e);

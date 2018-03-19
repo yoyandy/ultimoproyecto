@@ -13,7 +13,7 @@ export class ComentarioService {
   ) { }
 
   fetchComentario(): Observable<any> {
-    return this.http.get('https://localhost:3000/api/comentarios')
+    return this.http.get('http://localhost:3000/api/comentarios')
     .map((res: Response) => res.json())
     .map(comentario => comentario)
     .catch(e => {
@@ -23,10 +23,10 @@ export class ComentarioService {
   }
 
   addComentario(comentario): Observable<any> {
-    return this.http.post('https://localhost:3000/api/comentarios', comentario)
+    return this.http.post('http://localhost:3000/api/comentarios', comentario)
     .map((res: Response) => res.json())
-    .map(function(Comentario) {
-    return comentario;
+    .map(function(respuesta) {
+    return respuesta;
   })
     .catch(e => {
       console.log(e);

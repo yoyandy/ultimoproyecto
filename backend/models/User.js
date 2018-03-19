@@ -8,9 +8,6 @@ const userSchema = new require("mongoose").Schema({
         type:String,
         required:true
     },
-    password:{
-        type:String
-    },
     roles:{
         type:String,
         enum:["USER", "PREMIUM", "ADMIN"],
