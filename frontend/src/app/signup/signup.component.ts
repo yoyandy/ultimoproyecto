@@ -13,13 +13,10 @@ export class SignupComponent implements OnInit {
     private service: SessionService,
     private router: Router
   ) { }
-  newUser = {};
 
-  signUp() {
-    this.service.signUp(this.newUser)
-    .subscribe(user => {
-      this.router.navigate(['login']);
-    });
+  sendSignupForm(myForm) {
+    this.service.signup(myForm.value)
+      .subscribe(() => this.router.navigate(['login']));
   }
 
   ngOnInit() {

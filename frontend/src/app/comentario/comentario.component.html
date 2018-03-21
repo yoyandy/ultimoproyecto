@@ -1,13 +1,26 @@
-<div id="container">
+ 
+ <br>
+  <br>
+  <br>
+
   
-    <div>
-      <label >Titulo de tu sueño</label>
-      <input type="text" [(ngModel)]="comment.title">
-      <label for="comentarioText">Describe tu sueño</label>
-      <textarea [(ngModel)]="comment.body" type="comentario" name="comentarioText" maxlength="140"
-        placeholder="What's going on?"></textarea> 
-      <button (click)="saveComentario()" class="button blue fright">Enviar</button>
-    </div>
-  
-  
+
+<div class="container">
+  <div action="holabola">
+    <h3>Cuentanos tu sueño</h3>
+    <br>
+    <label for="fname">Nombre completo</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Titulo</label>
+    <input type="text" [(ngModel)]="comment.title"placeholder="Nombre de la historia..">
+
+
+    <label for="text">Describe tu sueño</label>
+    <br>
+    <textarea [(ngModel)]="comment.body" type="comentario" name="comentarioText" placeholder="Write something.." style="width:100%"></textarea>
+
+    <button (click)="saveComentario()" class="button blue fright">Enviar</button>
   </div>
+</div>
+

@@ -43,7 +43,7 @@ export class EntradaService {
     })
   }
 
-  addItem(item):Observable<any>{
+  addItem(item): Observable<any>{
     return this.http.post('/api/cards', item)
     .map((res:Response)=>res.json())
     .map(function(item){

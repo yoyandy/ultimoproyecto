@@ -22,12 +22,14 @@ import { AboutComponent } from './about/about.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { PublishstoryComponent } from './publishstory/publishstory.component';
 
+
 const routes = [
+  {path: '', component: HomeComponent, pathMatch: 'full'},
   {path: '', component: HomeComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
   {path: 'entrada', component: EntradaComponent},
-  {path: 'comentario', component: ComentarioComponent},
+  {path: 'comentario', component: ComentarioComponent, canActivate: [SessionService]},
   {path: 'about', component: AboutComponent},
   {path: 'contacto', component: ContactoComponent},
   {path: 'publishstory', component: PublishstoryComponent}
@@ -45,15 +47,16 @@ const routes = [
     HomeComponent,
     AboutComponent,
     ContactoComponent,
-    PublishstoryComponent
+    PublishstoryComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
   providers: [ComentarioService, SessionService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
+
 export class AppModule { }

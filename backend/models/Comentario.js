@@ -1,5 +1,6 @@
 const Schema = require("mongoose").Schema;
 const comentarioSchema = new require("mongoose").Schema({
+
     title:{
         type:String,
         required:true

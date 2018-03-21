@@ -9,25 +9,32 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  formInfo = {
+    email: '',
+    password: ''
+  };
   constructor(
     private service: SessionService,
     private router: Router
   ) { }
 
-  user = {};
-
-  login() {
-    this.service.login(this.user)
-    .subscribe(res => {
-      console.log(res)
-      this.router.navigate(['comentario']);
-    });
+  sendForm() {
+    this.service.login(this.formInfo.email,this.formInfo.password)
+    .subscribe(resp => this.router.navigate(['comentario']));
   }
 
+  // login() {
+  //   this.service.login(this.user)
+  //   .subscribe(res => {
+  //     console.log(res);
+  //     this.router.navigate(['comentario']);
+  //   });
+  // }
+
   ngOnInit() {
-    if (localStorage.getItem('user')){
-      this.router.navigate(['users']);
-    }
+    // if (localStorage.getItem('user')) {
+    //   this.router.navigate(['users']);
+    // }
   }
 
 }
