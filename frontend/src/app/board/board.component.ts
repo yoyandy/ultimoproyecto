@@ -24,10 +24,9 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'));
     this.comentarioService.fetchComentario()
     .subscribe (comentarios => this.comentarios = comentarios);
-
-    localStorage.getItem('user') ? this.user = localStorage.getItem('user') : this.user = undefined;
   }
 
 }

@@ -23,18 +23,8 @@ export class LoginComponent implements OnInit {
     .subscribe(resp => this.router.navigate(['comentario']));
   }
 
-  // login() {
-  //   this.service.login(this.user)
-  //   .subscribe(res => {
-  //     console.log(res);
-  //     this.router.navigate(['comentario']);
-  //   });
-  // }
 
   ngOnInit() {
-    // if (localStorage.getItem('user')) {
-    //   this.router.navigate(['users']);
-    // }
   }
 
 }

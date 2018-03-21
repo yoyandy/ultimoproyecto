@@ -8,9 +8,13 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class ComentarioService {
 
-  constructor(
-    private http: Http
-  ) { }
+  constructor(private http: Http) { }
+    BASE_URL = 'http://localhost:3000/api';
+
+// getAllComentarios() {
+//   return this.http.get('http://localhost:3000/api/comentarios')
+//   .map(res => res.json());
+// }
 
   fetchComentario(): Observable<any> {
     return this.http.get('http://localhost:3000/api/comentarios')
@@ -27,15 +31,6 @@ export class ComentarioService {
     .map((res: Response) => res.json())
     .map(function(respuesta) {
     return respuesta;
-  })
-    .catch(e => {
-      console.log(e);
-      return Observable.throw(e);
-    });
-  }
+  });
 
 }
-
-
-
-

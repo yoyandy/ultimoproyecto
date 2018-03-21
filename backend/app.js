@@ -32,7 +32,7 @@ const options = {
 app.use(require("cors")(options));
 
 //db
-require("mongoose").connect("mongodb://localhost/sueño"); 
+require("mongoose").connect("mongodb://fri:fri@ds121589.mlab.com:21589/sueno"); 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

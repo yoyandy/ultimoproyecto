@@ -21,9 +21,9 @@
                         <a class="nav-link" href="/contacto"><b>Colabora</b></a>
                       </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/signup"><b>Registrate</b></a>
+                    <a class="nav-link" href="/signup" *ngIf="!user"><b>Registrate</b></a>
                   </li>
-                  <li class="nav-item">
+                  <li *ngIf="!user" class="nav-item">
                         <a class="nav-link" href="/login"><b>Log in</b></a>
                       </li>
                       <li class="nav-item" (click)="logout()" *ngIf="user">

@@ -69,7 +69,10 @@ export class SessionService {
 
 logout() {
   return this.http.post(`${this.BASE_URL}/logout`, {withCredentials: true})
-  .map(res => res.json())
+  .map(res => {
+    localStorage.removeItem('user');
+    res.json ()
+  })
   .catch (e => {
         return Observable.throw(e.json().message);
   });

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ComentarioService} from '../services//comentario.service';
 import { SessionService } from '../services/session.service';
+import {Router} from '@angular/router';
+import { RootData } from '@angular/core/src/view';
+// import { Router } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-comentario',
@@ -12,6 +15,7 @@ export class ComentarioComponent implements OnInit {
   constructor(
     private comService: ComentarioService,
     private sessionService: SessionService,
+    private router: Router
   ) { }
   comment = {};
   user = {};
@@ -22,8 +26,10 @@ export class ComentarioComponent implements OnInit {
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('user'));
+    if(!this.user){
+      this.router.navigate(['login']);
+    }
     this.loggedin();
-    localStorage.getItem('user') ? this.user = localStorage.getItem('user') : this.user = undefined;
   }
 
   saveComentario() {
