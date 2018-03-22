@@ -11,13 +11,13 @@ export class ComentarioService {
   constructor(private http: Http) { }
     BASE_URL = 'http://localhost:3000/api';
 
-// getAllComentarios() {
-//   return this.http.get('http://localhost:3000/api/comentarios')
-//   .map(res => res.json());
-// }
+getAllComentarios() {
+  return this.http.get('http://localhost:3000/api/comentarios')
+  .map(res => res.json());
+}
 
   fetchComentario(): Observable<any> {
-    return this.http.get('http://localhost:3000/api/comentarios')
+    return this.http.get(`${this.BASE_URL}/api/comentarios`)
     .map((res: Response) => res.json())
     .map(comentario => comentario)
     .catch(e => {
@@ -27,10 +27,11 @@ export class ComentarioService {
   }
 
   addComentario(comentario): Observable<any> {
-    return this.http.post('http://localhost:3000/api/comentarios', comentario)
+    return this.http.post(`${this.BASE_URL}/api/comentarios`, comentario)
     .map((res: Response) => res.json())
     .map(function(respuesta) {
     return respuesta;
   });
 
+}
 }

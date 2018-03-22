@@ -8,16 +8,16 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
+                  <li *ngIf="!user" class="nav-item">
                     <a class="nav-link" href="/"><b>Inicio</b></a>
                   </li>
-                  <li class="nav-item">
+                  <li *ngIf="!user" class="nav-item">
                     <a class="nav-link" href="/about"><b>Sobre nosotros</b></a>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link" href="/publishstory"><b>Nuestras Historias</b></a>
                     </li>
-                    <li class="nav-item">
+                    <li *ngIf="!user" class="nav-item">
                         <a class="nav-link" href="/contacto"><b>Colabora</b></a>
                       </li>
                   <li class="nav-item">
@@ -26,9 +26,12 @@
                   <li *ngIf="!user" class="nav-item">
                         <a class="nav-link" href="/login"><b>Log in</b></a>
                       </li>
-                      <li class="nav-item" (click)="logout()" *ngIf="user">
-                        <a class="nav-link" ><b>Log out</b></a>
-                      </li>
+                      <li *ngIf="user" class="nav-item">
+                          <a class="nav-link" href="/comentario"><b>Cuentanos tu sueño</b></a>
+                        </li>
+                        <li class="nav-item" (click)="logout()" *ngIf="user">
+                            <a class="nav-link" ><b>Log out</b></a>
+                          </li>
                 </ul>
               </div>
             </div>
