@@ -9,10 +9,10 @@ import 'rxjs/add/observable/throw';
 export class ComentarioService {
 
   constructor(private http: Http) { }
-    BASE_URL = 'http://localhost:3000/api';
+    BASE_URL = 'http://localhost:3000';
 
 getAllComentarios() {
-  return this.http.get('http://localhost:3000/api/comentarios')
+  return this.http.get(`${this.BASE_URL}/api/comentarios`)
   .map(res => res.json());
 }
 
